@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.elmback.mapper.DeliveryAddressMapper">
+    <update id="updateAddress">
+        update deliveryaddress
+        <set>
+            <if test="contactName != null">contactName=#{contactName},</if>
+            <if test="contactSex != null">contactSex=#{contactSex},</if>
+            <if test="contactTel != null">contactTel=#{contactTel},</if>
+            <if test="address != null">address=#{address},</if>
+            <if test="userId != null">userId=#{userId},</if>
+        </set>
+        where daId=#{daId}
+    </update>
+</mapper>

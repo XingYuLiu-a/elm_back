@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.elmback.mapper.OrdersMapper">
+    <insert id="addOrders" parameterType="com.example.elmback.pojo.Orders" useGeneratedKeys="true" keyProperty="orderId">
+        insert into orders(userId, businessId, orderDate, orderTotal, daId, orderState)
+        values (#{userId}, #{businessId},#{orderDate}, #{orderTotal},#{daId},#{orderState})
+    </insert>
+
+    <update id="updateOrders">
+        update orders
+        <set>
+            <if test="userId != null">userId=#{userId},</if>
+            <if test="businessId != null">businessId=#{businessId},</if>
+            <if test="orderDate != null">orderDate=#{orderDate},</if>
+            <if test="orderTotal != null">orderTotal=#{orderTotal},</if>
+            <if test="daId != null">daId=#{daId},</if>
+            <if test="orderState != null">orderState=#{orderState},</if>
+        </set>
+        where orderId=#{orderId}
+    </update>
+</mapper>
